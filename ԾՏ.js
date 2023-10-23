@@ -1,78 +1,3 @@
-
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
-}
-
-class LinkedList {
-  constructor() {
-    this.head = null;
-  }
-
-  append(data) {
-    const newNode = new Node(data);
-    if (!this.head) {
-      this.head = newNode;
-    } else {
-      let current = this.head;
-      while (current.next) {
-        current = current.next;
-      }
-      current.next = newNode;
-    }
-  }
-
-  getHead() {
-    let current = this.head;
-    return current
-  }
-
-}
-
-const myList = new LinkedList();
-myList.append(1);
-myList.append(2);
-myList.append(3);
-myList.append(3);
-myList.append(2);
-myList.append(1);
-
-let head = myList.getHead()
-
-
-
-console.log(isPolindron(head))
-
-function isPolindron(head) {
-  var current = head
-  let x = (next, cur, increase) => {
-    if (next === undefined) return true
-    return increase ? next == cur + 1 : next == cur - 1
-  }
-
-
-  let increase = true
-  while (current) {
-    if (increase && current?.next?.data == current.data || x(current?.next?.data, current.data, false)) {
-      increase = false
-    }
-
-    else if (!x(current?.next?.data, current.data, increase)) {
-      return false
-    }
-
-    current = current.next
-  }
-
-  return true
-};
-
-
-
-
-
 function convertToTitle(columnNumber) {
   var result = ""
   while(columnNumber > 0){
@@ -122,3 +47,69 @@ return result;
 };
 
 console.log(romanToInt('XVI'))
+
+
+
+
+
+
+
+
+
+
+
+class Node {
+  constructor(data) {
+    this.data = data; 
+    this.next = null;  
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null; 
+  }
+
+  append(data) {
+    const newNode = new Node(data); 
+    if (!this.head) {  
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      while (current.next) {
+        current = current.next; 
+      }
+      current.next = newNode; 
+    }
+  }
+
+  getHead() {
+    let current = this.head;
+    return current
+    }
+  
+}
+
+const myList = new LinkedList();  
+myList.append(1); 
+myList.append(2);
+myList.append(2);
+myList.append(3);
+myList.append(3);
+
+let head = myList.getHead()
+console.log(deleteDuplicates(head))
+
+function deleteDuplicates(head) {
+  var current = head;
+  
+  while(current) {
+      if(current.next !== null && current.data == current.next.data) {
+          current.next = current.next.next;
+      } else {
+          current = current.next;
+      }
+  }
+  
+  return head;
+};
